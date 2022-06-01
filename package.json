@@ -1,8 +1,8 @@
 {
   "name": "take-home-test",
   "version": "1.0.0",
-  "repository": "git@github.com:inato/take-home-test.git",
-  "author": "greenly",
+  "repository": "git@github.com:RobinChailley/greenly-take-home-test.git",
+  "author": "Robin Chailley",
   "license": "MIT",
   "private": true,
   "engines": {
