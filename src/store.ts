@@ -1,38 +1,39 @@
-export class DiscountOffer {
-  constructor(partnerName, expiresIn, discountRateInPercent) {
-    this.partnerName = partnerName;
-    this.expiresIn = expiresIn;
-    this.discountInPercent = discountRateInPercent;
-  }
-}
+import { DiscountOffer } from "./discountOffer";
 
 export class Store {
+  public discountOffers: DiscountOffer[];
+
   constructor(discountOffers = []) {
     this.discountOffers = discountOffers;
   }
+
   updateDiscounts() {
-    for (var i = 0; i < this.discountOffers.length; i++) {
+    for (let i = 0; i < this.discountOffers.length; i++) {
       if (
         this.discountOffers[i].partnerName != "Naturalia" &&
         this.discountOffers[i].partnerName != "Vinted"
       ) {
         if (this.discountOffers[i].discountInPercent > 0) {
           if (this.discountOffers[i].partnerName != "Ilek") {
-            this.discountOffers[i].discountInPercent = this.discountOffers[i].discountInPercent - 1;
+            this.discountOffers[i].discountInPercent =
+              this.discountOffers[i].discountInPercent - 1;
           }
         }
       } else {
         if (this.discountOffers[i].discountInPercent < 50) {
-          this.discountOffers[i].discountInPercent = this.discountOffers[i].discountInPercent + 1;
+          this.discountOffers[i].discountInPercent =
+            this.discountOffers[i].discountInPercent + 1;
           if (this.discountOffers[i].partnerName == "Vinted") {
             if (this.discountOffers[i].expiresIn < 11) {
               if (this.discountOffers[i].discountInPercent < 50) {
-                this.discountOffers[i].discountInPercent = this.discountOffers[i].discountInPercent + 1;
+                this.discountOffers[i].discountInPercent =
+                  this.discountOffers[i].discountInPercent + 1;
               }
             }
             if (this.discountOffers[i].expiresIn < 6) {
               if (this.discountOffers[i].discountInPercent < 50) {
-                this.discountOffers[i].discountInPercent = this.discountOffers[i].discountInPercent + 1;
+                this.discountOffers[i].discountInPercent =
+                  this.discountOffers[i].discountInPercent + 1;
               }
             }
           }
@@ -46,16 +47,19 @@ export class Store {
           if (this.discountOffers[i].partnerName != "Vinted") {
             if (this.discountOffers[i].discountInPercent > 0) {
               if (this.discountOffers[i].partnerName != "Ilek") {
-                this.discountOffers[i].discountInPercent = this.discountOffers[i].discountInPercent - 1;
+                this.discountOffers[i].discountInPercent =
+                  this.discountOffers[i].discountInPercent - 1;
               }
             }
           } else {
             this.discountOffers[i].discountInPercent =
-              this.discountOffers[i].discountInPercent - this.discountOffers[i].discountInPercent;
+              this.discountOffers[i].discountInPercent -
+              this.discountOffers[i].discountInPercent;
           }
         } else {
           if (this.discountOffers[i].discountInPercent < 50) {
-            this.discountOffers[i].discountInPercent = this.discountOffers[i].discountInPercent + 1;
+            this.discountOffers[i].discountInPercent =
+              this.discountOffers[i].discountInPercent + 1;
           }
         }
       }
