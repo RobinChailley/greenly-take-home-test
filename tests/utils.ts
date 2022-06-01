@@ -11,3 +11,22 @@ export const elapseDays = (
 
   return store.updateDiscounts();
 };
+
+export const createStoreWithOneOffer = (
+  partnerName: string,
+  expiresIn: number,
+  discountRateInPercent: number
+): Store => {
+  return new Store([
+    new DiscountOffer(partnerName, expiresIn, discountRateInPercent),
+  ]);
+};
+
+export const expectExpiresAndDiscountEquals = (
+  discountOffer: DiscountOffer,
+  expiresIn: number,
+  discountInPercent: number
+): void => {
+  expect(discountOffer.discountInPercent).toEqual(discountInPercent);
+  expect(discountOffer.expiresIn).toEqual(expiresIn);
+};
